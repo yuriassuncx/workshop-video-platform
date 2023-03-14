@@ -1,9 +1,10 @@
  # Fábrica de Software | Plataforma de Vídeos
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/104099580/176366948-ac848940-e51f-4ebe-a3b1-45ad1320cee7.gif)"
+![image](https://user-images.githubusercontent.com/104099580/225122976-c67b9d20-352b-4680-b02a-6fd100c27f74.png)
 
-<p align="center">Project developed according to the free Ignite Lab event.</p>
+<p align="center">Plataforma criada para auxiliar na organização dos materiais do Workshop 2023.1, da Fábrica de Software, Unipê. O intuito é que os calouros consigam utilizá-la para assistir a algumas aulas, acessar os materiais e fixar bem o conteúdo.</p>
 <p align="center">https://workshop-video-platform.vercel.app/</p>
+<p align="center">https://www.figma.com/community/file/1120711251998877938</p>
 
 # 💻 Developing differences...
 
@@ -12,7 +13,6 @@
 
 ![02](https://user-images.githubusercontent.com/104099580/176366954-68b8c4ad-ba56-41e1-83ba-84777dc7a793.png)
 ![01](https://user-images.githubusercontent.com/104099580/176366959-5e0c346e-2fe9-4b24-92d9-5d6e63245c33.png)
-
 
 # 🚀 Technologies:
 
