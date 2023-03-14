@@ -3,7 +3,7 @@
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/104099580/176366948-ac848940-e51f-4ebe-a3b1-45ad1320cee7.gif)"
 
 <p align="center">Project developed according to the free Ignite Lab event.</p>
-<p align="center">https://ignite-lab-react-ecru.vercel.app/</p>
+<p align="center">https://workshop-video-platform.vercel.app/</p>
 
 # 💻 Developing differences...
 
