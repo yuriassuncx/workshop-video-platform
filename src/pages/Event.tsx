@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
@@ -14,6 +14,10 @@ export function Event() {
         setIsSidebarOpened(!isSidebarOpened);
     }
 
+    useEffect(() => {
+        setIsSidebarOpened(!isSidebarOpened);
+    }, [slug])
+
     return (
         <div className="flex flex-col min-h-screen">
             <Header
@@ -25,7 +29,7 @@ export function Event() {
                     ? <Video lessonSlug={slug} />
                     : <LessonIntroduction /> 
                 }
-                {(window.innerWidth>=1024 || isSidebarOpened) && (
+                {(window.innerWidth >= 1024 || isSidebarOpened) && (
                     <Sidebar />
                 )}
             </main>
