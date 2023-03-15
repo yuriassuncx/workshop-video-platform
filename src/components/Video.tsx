@@ -13,7 +13,7 @@ export function Video(props: VideoProps) {
         variables: {
             slug: props.lessonSlug,
         }
-    })
+    });
 
     if (!data || !data.lesson) {
         return (
