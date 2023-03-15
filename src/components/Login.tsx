@@ -34,7 +34,6 @@ export function Login() {
         />
 
         <button
-            type="submit"
             onClick={handleVerifyIfUserExists}
             disabled={!email}
             className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
