@@ -1,5 +1,5 @@
-query GetLessons {
-    lessons(orderBy: availableAt_ASC, stage: PUBLISHED) {
+query GetLessons ($area: Area) {
+    lessons(orderBy: availableAt_ASC, stage: PUBLISHED, where: {area: $area}) {
         id
         lessonType
         availableAt

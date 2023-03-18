@@ -1,5 +1,4 @@
-import { List, X } from "phosphor-react";
-import { useState } from "react";
+import { List, X } from 'phosphor-react';
 
 interface IHeader {
     isSidebarOpened: boolean;
@@ -9,10 +8,10 @@ interface IHeader {
 export function Header(props: IHeader) {
     return (
         <header className="w-full py-5 flex justify-between lg:items-center lg:justify-center bg-gray-700 border-b border-gray-600">
-            <div className="text-lg lg:text-3xl justify-center lg:justify-start flex space-x-2 px-4">
-                <strong>Frontend</strong>
-                <p className="text-green-500">|</p>
-                <p className="text-gray-200">UNIPÊ</p>
+            <div className="sm:text-xl lg:text-3xl justify-center lg:justify-start flex space-x-2 px-4">
+                <strong>Fábrica de Software</strong>
+                <p className="text-green-500 hidden md:flex">|</p>
+                <p className="text-gray-200 hidden md:flex">UNIPÊ</p>
             </div>
             <div className="flex gap-2 lg:hidden">
                 <h1 className="text-gray-200">Aulas</h1>

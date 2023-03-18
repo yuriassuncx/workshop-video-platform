@@ -28,6 +28,11 @@ export type Aggregate = {
   count: Scalars['Int'];
 };
 
+export enum Area {
+  Frontend = 'frontend',
+  Uiux = 'uiux'
+}
+
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset';
@@ -1284,6 +1289,7 @@ export type ImageTransformationInput = {
 
 export type Lesson = Node & {
   __typename?: 'Lesson';
+  area?: Maybe<Area>;
   availableAt?: Maybe<Scalars['DateTime']>;
   challenge?: Maybe<Challenge>;
   /** The time the document was created */
@@ -1390,6 +1396,7 @@ export type LessonConnection = {
 };
 
 export type LessonCreateInput = {
+  area?: InputMaybe<Area>;
   availableAt?: InputMaybe<Scalars['DateTime']>;
   challenge?: InputMaybe<ChallengeCreateOneInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
@@ -1435,6 +1442,13 @@ export type LessonManyWhereInput = {
   OR?: InputMaybe<Array<LessonWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  area?: InputMaybe<Area>;
+  /** All values that are contained in given list. */
+  area_in?: InputMaybe<Array<InputMaybe<Area>>>;
+  /** All values that are not equal to given value. */
+  area_not?: InputMaybe<Area>;
+  /** All values that are not contained in given list. */
+  area_not_in?: InputMaybe<Array<InputMaybe<Area>>>;
   availableAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   availableAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1611,6 +1625,8 @@ export type LessonManyWhereInput = {
 };
 
 export enum LessonOrderByInput {
+  AreaAsc = 'area_ASC',
+  AreaDesc = 'area_DESC',
   AvailableAtAsc = 'availableAt_ASC',
   AvailableAtDesc = 'availableAt_DESC',
   CreatedAtAsc = 'createdAt_ASC',
@@ -1639,6 +1655,7 @@ export enum LessonType {
 }
 
 export type LessonUpdateInput = {
+  area?: InputMaybe<Area>;
   availableAt?: InputMaybe<Scalars['DateTime']>;
   challenge?: InputMaybe<ChallengeUpdateOneInlineInput>;
   description?: InputMaybe<Scalars['String']>;
@@ -1667,6 +1684,7 @@ export type LessonUpdateManyInlineInput = {
 };
 
 export type LessonUpdateManyInput = {
+  area?: InputMaybe<Area>;
   availableAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['String']>;
   lessonType?: InputMaybe<LessonType>;
@@ -1733,6 +1751,13 @@ export type LessonWhereInput = {
   OR?: InputMaybe<Array<LessonWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  area?: InputMaybe<Area>;
+  /** All values that are contained in given list. */
+  area_in?: InputMaybe<Array<InputMaybe<Area>>>;
+  /** All values that are not equal to given value. */
+  area_not?: InputMaybe<Area>;
+  /** All values that are not contained in given list. */
+  area_not_in?: InputMaybe<Array<InputMaybe<Area>>>;
   availableAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   availableAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -5791,7 +5816,9 @@ export type GetLessonBySlugQueryVariables = Exact<{
 
 export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, description?: string | null, teacher?: { __typename?: 'Teacher', bio: string, avatarURL: string, name: string } | null, challenge?: { __typename?: 'Challenge', url: string } | null } | null };
 
-export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetLessonsQueryVariables = Exact<{
+  area?: InputMaybe<Area>;
+}>;
 
 
 export type GetLessonsQuery = { __typename?: 'Query', lessons: Array<{ __typename?: 'Lesson', id: string, lessonType: LessonType, availableAt?: any | null, title: string, slug: string }> };
@@ -5884,8 +5911,8 @@ export type GetLessonBySlugQueryHookResult = ReturnType<typeof useGetLessonBySlu
 export type GetLessonBySlugLazyQueryHookResult = ReturnType<typeof useGetLessonBySlugLazyQuery>;
 export type GetLessonBySlugQueryResult = Apollo.QueryResult<GetLessonBySlugQuery, GetLessonBySlugQueryVariables>;
 export const GetLessonsDocument = gql`
-    query GetLessons {
-  lessons(orderBy: availableAt_ASC, stage: PUBLISHED) {
+    query GetLessons($area: Area) {
+  lessons(orderBy: availableAt_ASC, stage: PUBLISHED, where: {area: $area}) {
     id
     lessonType
     availableAt
@@ -5907,6 +5934,7 @@ export const GetLessonsDocument = gql`
  * @example
  * const { data, loading, error } = useGetLessonsQuery({
  *   variables: {
+ *      area: // value for 'area'
  *   },
  * });
  */
