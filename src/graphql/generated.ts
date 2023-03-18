@@ -42,6 +42,7 @@ export type Asset = Node & {
   createdBy?: Maybe<User>;
   /** Get the document in other stages */
   documentInStages: Array<Asset>;
+  fileChallenge: Array<Challenge>;
   /** The file name */
   fileName: Scalars['String'];
   /** The file handle */
@@ -56,8 +57,10 @@ export type Asset = Node & {
   locale: Locale;
   /** Get the other localizations for this document */
   localizations: Array<Asset>;
+  materialLesson: Array<Lesson>;
   /** The mime type of the file */
   mimeType?: Maybe<Scalars['String']>;
+  mindMapLesson: Array<Lesson>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -101,6 +104,20 @@ export type AssetDocumentInStagesArgs = {
 
 
 /** Asset system model */
+export type AssetFileChallengeArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ChallengeOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ChallengeWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
@@ -112,6 +129,34 @@ export type AssetHistoryArgs = {
 export type AssetLocalizationsArgs = {
   includeCurrent?: Scalars['Boolean'];
   locales?: Array<Locale>;
+};
+
+
+/** Asset system model */
+export type AssetMaterialLessonArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<LessonOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LessonWhereInput>;
+};
+
+
+/** Asset system model */
+export type AssetMindMapLessonArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<LessonOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LessonWhereInput>;
 };
 
 
@@ -178,12 +223,15 @@ export type AssetConnection = {
 
 export type AssetCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  fileChallenge?: InputMaybe<ChallengeCreateManyInlineInput>;
   fileName: Scalars['String'];
   handle: Scalars['String'];
   height?: InputMaybe<Scalars['Float']>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
+  materialLesson?: InputMaybe<LessonCreateManyInlineInput>;
   mimeType?: InputMaybe<Scalars['String']>;
+  mindMapLesson?: InputMaybe<LessonCreateManyInlineInput>;
   size?: InputMaybe<Scalars['Float']>;
   slug?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -264,6 +312,9 @@ export type AssetManyWhereInput = {
   documentInStages_every?: InputMaybe<AssetWhereStageInput>;
   documentInStages_none?: InputMaybe<AssetWhereStageInput>;
   documentInStages_some?: InputMaybe<AssetWhereStageInput>;
+  fileChallenge_every?: InputMaybe<ChallengeWhereInput>;
+  fileChallenge_none?: InputMaybe<ChallengeWhereInput>;
+  fileChallenge_some?: InputMaybe<ChallengeWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -283,6 +334,12 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  materialLesson_every?: InputMaybe<LessonWhereInput>;
+  materialLesson_none?: InputMaybe<LessonWhereInput>;
+  materialLesson_some?: InputMaybe<LessonWhereInput>;
+  mindMapLesson_every?: InputMaybe<LessonWhereInput>;
+  mindMapLesson_none?: InputMaybe<LessonWhereInput>;
+  mindMapLesson_some?: InputMaybe<LessonWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -373,12 +430,15 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  fileChallenge?: InputMaybe<ChallengeUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
+  materialLesson?: InputMaybe<LessonUpdateManyInlineInput>;
   mimeType?: InputMaybe<Scalars['String']>;
+  mindMapLesson?: InputMaybe<LessonUpdateManyInlineInput>;
   size?: InputMaybe<Scalars['Float']>;
   slug?: InputMaybe<Scalars['String']>;
   width?: InputMaybe<Scalars['Float']>;
@@ -537,6 +597,9 @@ export type AssetWhereInput = {
   documentInStages_every?: InputMaybe<AssetWhereStageInput>;
   documentInStages_none?: InputMaybe<AssetWhereStageInput>;
   documentInStages_some?: InputMaybe<AssetWhereStageInput>;
+  fileChallenge_every?: InputMaybe<ChallengeWhereInput>;
+  fileChallenge_none?: InputMaybe<ChallengeWhereInput>;
+  fileChallenge_some?: InputMaybe<ChallengeWhereInput>;
   fileName?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   fileName_contains?: InputMaybe<Scalars['String']>;
@@ -609,6 +672,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  materialLesson_every?: InputMaybe<LessonWhereInput>;
+  materialLesson_none?: InputMaybe<LessonWhereInput>;
+  materialLesson_some?: InputMaybe<LessonWhereInput>;
   mimeType?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mimeType_contains?: InputMaybe<Scalars['String']>;
@@ -628,6 +694,9 @@ export type AssetWhereInput = {
   mimeType_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   mimeType_starts_with?: InputMaybe<Scalars['String']>;
+  mindMapLesson_every?: InputMaybe<LessonWhereInput>;
+  mindMapLesson_none?: InputMaybe<LessonWhereInput>;
+  mindMapLesson_some?: InputMaybe<LessonWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -748,6 +817,7 @@ export type Challenge = Node & {
   createdBy?: Maybe<User>;
   /** Get the document in other stages */
   documentInStages: Array<Challenge>;
+  file?: Maybe<Asset>;
   /** List of Challenge versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -777,6 +847,12 @@ export type ChallengeDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
+};
+
+
+export type ChallengeFileArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -830,6 +906,7 @@ export type ChallengeConnection = {
 export type ChallengeCreateInput = {
   cl4e8k4ev0anm01xu7gc87fn9?: InputMaybe<LessonCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  file?: InputMaybe<AssetCreateOneInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   url: Scalars['String'];
 };
@@ -886,6 +963,7 @@ export type ChallengeManyWhereInput = {
   documentInStages_every?: InputMaybe<ChallengeWhereStageInput>;
   documentInStages_none?: InputMaybe<ChallengeWhereStageInput>;
   documentInStages_some?: InputMaybe<ChallengeWhereStageInput>;
+  file?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -976,6 +1054,7 @@ export enum ChallengeOrderByInput {
 
 export type ChallengeUpdateInput = {
   cl4e8k4ev0anm01xu7gc87fn9?: InputMaybe<LessonUpdateManyInlineInput>;
+  file?: InputMaybe<AssetUpdateOneInlineInput>;
   url?: InputMaybe<Scalars['String']>;
 };
 
@@ -1078,6 +1157,7 @@ export type ChallengeWhereInput = {
   documentInStages_every?: InputMaybe<ChallengeWhereStageInput>;
   documentInStages_none?: InputMaybe<ChallengeWhereStageInput>;
   documentInStages_some?: InputMaybe<ChallengeWhereStageInput>;
+  file?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1304,6 +1384,8 @@ export type Lesson = Node & {
   /** The unique identifier */
   id: Scalars['ID'];
   lessonType: LessonType;
+  material?: Maybe<Asset>;
+  mindMap?: Maybe<Asset>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -1346,6 +1428,18 @@ export type LessonHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
   stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type LessonMaterialArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type LessonMindMapArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -1402,6 +1496,8 @@ export type LessonCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description?: InputMaybe<Scalars['String']>;
   lessonType: LessonType;
+  material?: InputMaybe<AssetCreateOneInlineInput>;
+  mindMap?: InputMaybe<AssetCreateOneInlineInput>;
   slug: Scalars['String'];
   teacher?: InputMaybe<TeacherCreateOneInlineInput>;
   title: Scalars['String'];
@@ -1529,6 +1625,8 @@ export type LessonManyWhereInput = {
   lessonType_not?: InputMaybe<LessonType>;
   /** All values that are not contained in given list. */
   lessonType_not_in?: InputMaybe<Array<InputMaybe<LessonType>>>;
+  material?: InputMaybe<AssetWhereInput>;
+  mindMap?: InputMaybe<AssetWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1660,6 +1758,8 @@ export type LessonUpdateInput = {
   challenge?: InputMaybe<ChallengeUpdateOneInlineInput>;
   description?: InputMaybe<Scalars['String']>;
   lessonType?: InputMaybe<LessonType>;
+  material?: InputMaybe<AssetUpdateOneInlineInput>;
+  mindMap?: InputMaybe<AssetUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
   teacher?: InputMaybe<TeacherUpdateOneInlineInput>;
   title?: InputMaybe<Scalars['String']>;
@@ -1838,6 +1938,8 @@ export type LessonWhereInput = {
   lessonType_not?: InputMaybe<LessonType>;
   /** All values that are not contained in given list. */
   lessonType_not_in?: InputMaybe<Array<InputMaybe<LessonType>>>;
+  material?: InputMaybe<AssetWhereInput>;
+  mindMap?: InputMaybe<AssetWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -5814,7 +5916,7 @@ export type GetLessonBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, description?: string | null, teacher?: { __typename?: 'Teacher', bio: string, avatarURL: string, name: string } | null, challenge?: { __typename?: 'Challenge', url: string } | null } | null };
+export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename?: 'Lesson', title: string, videoId: string, description?: string | null, teacher?: { __typename?: 'Teacher', bio: string, avatarURL: string, name: string } | null, challenge?: { __typename?: 'Challenge', url: string } | null, material?: { __typename?: 'Asset', url: string } | null, mindMap?: { __typename?: 'Asset', url: string } | null } | null };
 
 export type GetLessonsQueryVariables = Exact<{
   area?: InputMaybe<Area>;
@@ -5877,6 +5979,12 @@ export const GetLessonBySlugDocument = gql`
       name
     }
     challenge {
+      url
+    }
+    material {
+      url
+    }
+    mindMap {
       url
     }
   }

@@ -1,4 +1,4 @@
-import { ChangeEvent, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 import { Area, useGetLessonsQuery } from '../graphql/generated';
 import { Lesson } from './Lesson';
@@ -27,7 +27,7 @@ export function Sidebar() {
                             id="area"
                             defaultValue={Area.Frontend}
                             onChange={(e) => setSelectedAreaName(e.target.value as Area)}
-                            className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500"
+                            className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 capitalize"
                         >
                             <option key={Area.Frontend} value={Area.Frontend}>{Area.Frontend}</option>
                             <option key={Area.Uiux} value={Area.Uiux}>{Area.Uiux}</option>

@@ -61,7 +61,7 @@ export function Video(props: VideoProps) {
                     </div>
 
                     <div className="flex flex-col w-full sm:w-auto gap-4">
-                        <a href="#" className="p-4 text-sm bg-green-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-green-700 transition-colors">
+                        <a href={data.lesson.challenge?.url} className="p-4 text-sm bg-green-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-green-700 transition-colors">
                             <DiscordLogo size={24} />
                             Comunidade do Discord
                         </a>
@@ -73,7 +73,7 @@ export function Video(props: VideoProps) {
                 </div>
 
                 <div className="gap-8 mt-20 grid md:grid-cols-2">
-                    <a href={data.lesson.challenge?.url} className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors cursor-pointer">
+                    <a href={data.lesson.material?.url} className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors cursor-pointer">
                         <div className="bg-green-700 h-full p-6 flex items-center">
                             <FileArrowDown size={40} />
                         </div>
@@ -88,7 +88,7 @@ export function Video(props: VideoProps) {
                         </div>
                     </a>
 
-                    <a className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors cursor-pointer">
+                    <a href={data.lesson.mindMap?.url} className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors cursor-pointer">
                         <div className="bg-green-700 h-full p-6 flex items-center">
                             <FileArrowDown size={40} />
                         </div>

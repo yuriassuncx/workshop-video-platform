@@ -11,5 +11,11 @@ query GetLessonBySlug ($slug: String) {
         challenge {
             url
         }
+        material {
+            url
+        }
+        mindMap {
+            url
+        }
     }
 }
