@@ -13,7 +13,7 @@ export function Subscribe() {
                         <p className="text-gray-200">UNIPÊ</p>
                     </div>
                     <h1 className="mt-8 mx-4 lg:mx-0 text-[2.0rem] lg:text-[2.5rem] leading-tight">
-                        Seja bem-vindo à <strong className="text-blue-500">plataforma completa</strong> do treinamento <strong className="text-blue-500">Frontend</strong>
+                        Seja bem-vindo à <strong className="text-blue-500">plataforma da Fábrica de Software 2023.1</strong>
                     </h1>
                     <p className="mt-8 mx-2 mb-8 lg:mb-0 lg:mx-0 lg:mt-4 text-gray-200 leading-relaxed">
                         Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.

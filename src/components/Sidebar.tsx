@@ -30,7 +30,7 @@ export function Sidebar() {
                             className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 capitalize"
                         >
                             <option key={Area.Frontend} value={Area.Frontend}>{Area.Frontend}</option>
-                            <option key={Area.Uiux} value={Area.Uiux}>{Area.Uiux}</option>
+                            <option key={Area.Uiux} value={Area.Uiux}>UI/UX</option>
                         </select>
                     </div>
                 </div>

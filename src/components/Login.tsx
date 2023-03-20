@@ -1,14 +1,12 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useGetSubscriberByEmailQuery } from '../graphql/generated';
-
 import toast from 'react-hot-toast';
 
 export function Login() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   
   async function handleVerifyIfUserExists(event: FormEvent) {
     event.preventDefault();
@@ -35,7 +33,7 @@ export function Login() {
 
         <button
             onClick={handleVerifyIfUserExists}
-            disabled={!email}
+            disabled={email.length < 5}
             className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
         >
             Entrar
